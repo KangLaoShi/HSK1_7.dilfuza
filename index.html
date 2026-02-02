@@ -57,14 +57,30 @@
         const ArrowRight = (props) => <IconBase {...props}><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></IconBase>;
         const ArrowLeft = (props) => <IconBase {...props}><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></IconBase>;
 
-        // --- 数据常量 ---
-        const UZBEK_MONTHS = [
-            "Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun",
-            "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"
+        // --- 数据常量 (多语言) ---
+        const MONTHS_DATA = [
+            { uz: "Yanvar", en: "January", ru: "Январь" },
+            { uz: "Fevral", en: "February", ru: "Февраль" },
+            { uz: "Mart", en: "March", ru: "Март" },
+            { uz: "Aprel", en: "April", ru: "Апрель" },
+            { uz: "May", en: "May", ru: "Май" },
+            { uz: "Iyun", en: "June", ru: "Июнь" },
+            { uz: "Iyul", en: "July", ru: "Июль" },
+            { uz: "Avgust", en: "August", ru: "Август" },
+            { uz: "Sentabr", en: "September", ru: "Сентябрь" },
+            { uz: "Oktabr", en: "October", ru: "Октябрь" },
+            { uz: "Noyabr", en: "November", ru: "Ноябрь" },
+            { uz: "Dekabr", en: "December", ru: "Декабрь" }
         ];
 
-        const UZBEK_WEEKDAYS = [
-            "Yakshanba", "Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba"
+        const WEEKDAYS_DATA = [
+            { uz: "Yakshanba", en: "Sunday", ru: "Воскресенье" },
+            { uz: "Dushanba", en: "Monday", ru: "Понедельник" },
+            { uz: "Seshanba", en: "Tuesday", ru: "Вторник" },
+            { uz: "Chorshanba", en: "Wednesday", ru: "Среда" },
+            { uz: "Payshanba", en: "Thursday", ru: "Четверг" },
+            { uz: "Juma", en: "Friday", ru: "Пятница" },
+            { uz: "Shanba", en: "Saturday", ru: "Суббота" }
         ];
 
         const CHINESE_NUMBERS = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
@@ -152,13 +168,13 @@
             };
 
             const weekHeaders = [
-                { zh: '周一', fullZh: '星期一', uz: 'Du', fullUz: 'Dushanba', color: 'text-teal-700 bg-teal-50 border-teal-100' },
-                { zh: '周二', fullZh: '星期二', uz: 'Se', fullUz: 'Seshanba', color: 'text-teal-700 bg-teal-50 border-teal-100' },
-                { zh: '周三', fullZh: '星期三', uz: 'Chor', fullUz: 'Chorshanba', color: 'text-teal-700 bg-teal-50 border-teal-100' },
-                { zh: '周四', fullZh: '星期四', uz: 'Pay', fullUz: 'Payshanba', color: 'text-teal-700 bg-teal-50 border-teal-100' },
-                { zh: '周五', fullZh: '星期五', uz: 'Ju', fullUz: 'Juma', color: 'text-teal-700 bg-teal-50 border-teal-100' },
-                { zh: '周六', fullZh: '星期六', uz: 'Sha', fullUz: 'Shanba', color: 'text-purple-700 bg-purple-50 border-purple-100' },
-                { zh: '周日', fullZh: '星期日', uz: 'Yak', fullUz: 'Yakshanba', color: 'text-rose-700 bg-rose-50 border-rose-100' },
+                { zh: '周一', fullZh: '星期一', uz: 'Du', fullUz: 'Dushanba', en: 'Mon', ru: 'Пн', color: 'text-teal-700 bg-teal-50 border-teal-100' },
+                { zh: '周二', fullZh: '星期二', uz: 'Se', fullUz: 'Seshanba', en: 'Tue', ru: 'Вт', color: 'text-teal-700 bg-teal-50 border-teal-100' },
+                { zh: '周三', fullZh: '星期三', uz: 'Chor', fullUz: 'Chorshanba', en: 'Wed', ru: 'Ср', color: 'text-teal-700 bg-teal-50 border-teal-100' },
+                { zh: '周四', fullZh: '星期四', uz: 'Pay', fullUz: 'Payshanba', en: 'Thu', ru: 'Чт', color: 'text-teal-700 bg-teal-50 border-teal-100' },
+                { zh: '周五', fullZh: '星期五', uz: 'Ju', fullUz: 'Juma', en: 'Fri', ru: 'Пт', color: 'text-teal-700 bg-teal-50 border-teal-100' },
+                { zh: '周六', fullZh: '星期六', uz: 'Sha', fullUz: 'Shanba', en: 'Sat', ru: 'Сб', color: 'text-purple-700 bg-purple-50 border-purple-100' },
+                { zh: '周日', fullZh: '星期日', uz: 'Yak', fullUz: 'Yakshanba', en: 'Sun', ru: 'Вс', color: 'text-rose-700 bg-rose-50 border-rose-100' },
             ];
 
             const questions = [
@@ -168,6 +184,8 @@
                     zh: '今天是几月几号？', 
                     pinyin: 'Jīntiān shì jǐ yuè jǐ hào?',
                     uz: 'Bugun sana necha?',
+                    en: 'What is the date today?',
+                    ru: 'Какое сегодня число?',
                     color: 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100'
                 },
                 { 
@@ -176,6 +194,8 @@
                     zh: '明天是几月几号？', 
                     pinyin: 'Míngtiān shì jǐ yuè jǐ hào?',
                     uz: 'Ertaga sana necha?',
+                    en: 'What is the date tomorrow?',
+                    ru: 'Какое завтра число?',
                     color: 'bg-green-50 text-green-700 border-green-200 hover:bg-green-100'
                 },
                 { 
@@ -184,6 +204,8 @@
                     zh: '昨天是几月几号？', 
                     pinyin: 'Zuótiān shì jǐ yuè jǐ hào?',
                     uz: 'Kecha sana necha edi?',
+                    en: 'What was the date yesterday?',
+                    ru: 'Какое число было вчера?',
                     color: 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100'
                 },
                 { 
@@ -192,6 +214,8 @@
                     zh: '你的生日是几月几号？', 
                     pinyin: 'Nǐ de shēngrì shì jǐ yuè jǐ hào?',
                     uz: 'Tug\'ilgan kuningiz qachon?',
+                    en: 'When is your birthday?',
+                    ru: 'Когда твой день рождения?',
                     color: 'bg-pink-50 text-pink-700 border-pink-200 hover:bg-pink-100'
                 }
             ];
@@ -203,40 +227,55 @@
                 let prefixZh = "";
                 let prefixPinyin = "";
                 let prefixUz = "";
+                let prefixEn = "";
+                let prefixRu = "";
 
                 switch(type) {
                     case 'today':
                         prefixZh = "今天是";
                         prefixPinyin = "Jīntiān shì";
                         prefixUz = "Bugun";
+                        prefixEn = "Today is";
+                        prefixRu = "Сегодня";
                         break;
                     case 'tomorrow':
                         targetDate.setDate(today.getDate() + 1);
                         prefixZh = "明天是";
                         prefixPinyin = "Míngtiān shì";
                         prefixUz = "Ertaga";
+                        prefixEn = "Tomorrow is";
+                        prefixRu = "Завтра";
                         break;
                     case 'yesterday':
                         targetDate.setDate(today.getDate() - 1);
                         prefixZh = "昨天是";
                         prefixPinyin = "Zuótiān shì";
                         prefixUz = "Kecha";
+                        prefixEn = "Yesterday was";
+                        prefixRu = "Вчера было";
                         break;
                     case 'birthday':
                         return {
                             zh: "我的生日是 ___ 月 ___ 号。",
                             pinyin: "Wǒ de shēngrì shì ___ Yuè ___ Hào.",
                             uz: "Mening tug'ilgan kunim ___ (oy) ___ (kun).",
+                            en: "My birthday is ___ (month) ___ (day).",
+                            ru: "Мой день рождения ___ (месяц) ___ (день).",
                             isTemplate: true
                         };
                     default:
                         return null;
                 }
 
+                // Note: MONTHS_DATA is 0-indexed, date.getMonth() is 0-indexed
+                const monthName = MONTHS_DATA[targetDate.getMonth()];
+                
                 return {
                     zh: `${prefixZh}${getSpokenDateAnswer(targetDate)}。`,
                     pinyin: `${prefixPinyin} ${getSpokenPinyin(targetDate)}.`,
-                    uz: `${prefixUz} ${targetDate.getDate()}-${UZBEK_MONTHS[targetDate.getMonth()]}.`,
+                    uz: `${prefixUz} ${targetDate.getDate()}-${monthName.uz}.`,
+                    en: `${prefixEn} ${monthName.en} ${targetDate.getDate()}.`,
+                    ru: `${prefixRu} ${targetDate.getDate()} ${monthName.ru}.`, // Simplified RU date format
                     isTemplate: false
                 };
             };
@@ -297,7 +336,7 @@
                             <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-4 flex justify-between items-center text-white shrink-0">
                                 <div className="flex items-center gap-2">
                                     <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
-                                    <span className="font-bold text-base sm:text-lg">对话 (Muloqot)</span>
+                                    <span className="font-bold text-base sm:text-lg">对话 (Muloqot / Dialogue)</span>
                                 </div>
                                 <button onClick={() => setActiveQuestion(null)} className="hover:bg-white/20 rounded-full p-2 transition-colors">
                                     <XIcon size={20} />
@@ -307,7 +346,7 @@
                             <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 overflow-y-auto">
                                 <div className="space-y-2">
                                     <div className="flex justify-between items-start">
-                                        <span className="text-xs font-bold text-indigo-500 uppercase tracking-wider">Savol (Question)</span>
+                                        <span className="text-xs font-bold text-indigo-500 uppercase tracking-wider">Savol (Question / Вопрос)</span>
                                         <button onClick={() => speakText(qData.zh)} className="text-indigo-500 hover:text-indigo-700 p-1">
                                             <Volume2 size={20} />
                                         </button>
@@ -315,13 +354,17 @@
                                     <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
                                         <h3 className="text-lg sm:text-xl font-bold text-gray-800">{qData.zh}</h3>
                                         <p className="text-sm text-indigo-600 font-medium mt-1">{qData.pinyin}</p>
-                                        <p className="text-xs text-gray-500 mt-2 italic">{qData.uz}</p>
+                                        <div className="mt-2 text-gray-500 space-y-0.5">
+                                            <p className="text-xs font-medium italic">{qData.uz}</p>
+                                            <p className="text-[10px]">{qData.en}</p>
+                                            <p className="text-[10px]">{qData.ru}</p>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
                                     <div className="flex justify-between items-start">
-                                        <span className="text-xs font-bold text-green-600 uppercase tracking-wider">Javob (Answer)</span>
+                                        <span className="text-xs font-bold text-green-600 uppercase tracking-wider">Javob (Answer / Ответ)</span>
                                         <button onClick={() => speakText(answerData.zh)} className="text-green-600 hover:text-green-700 p-1">
                                             <Volume2 size={20} />
                                         </button>
@@ -329,11 +372,16 @@
                                     <div className="bg-green-50 p-4 rounded-xl border border-green-100">
                                         <h3 className="text-lg sm:text-xl font-bold text-gray-800">{answerData.zh}</h3>
                                         <p className="text-sm text-green-600 font-medium mt-1">{answerData.pinyin}</p>
-                                        <p className="text-xs text-gray-500 mt-2 italic">{answerData.uz}</p>
+                                        <div className="mt-2 text-gray-500 space-y-0.5">
+                                            <p className="text-xs font-medium italic">{answerData.uz}</p>
+                                            <p className="text-[10px]">{answerData.en}</p>
+                                            <p className="text-[10px]">{answerData.ru}</p>
+                                        </div>
                                         {answerData.isTemplate && (
-                                            <p className="text-xs text-orange-500 mt-3 pt-2 border-t border-orange-200">
-                                                * O'z tug'ilgan kuningiz bilan to'ldiring (Fill with your birthday)
-                                            </p>
+                                            <div className="text-xs text-orange-500 mt-3 pt-2 border-t border-orange-200">
+                                                <p>* O'z tug'ilgan kuningiz bilan to'ldiring</p>
+                                                <p className="text-[10px] opacity-80">Fill with your birthday / Заполните дату своего рождения</p>
+                                            </div>
                                         )}
                                     </div>
                                 </div>
@@ -355,8 +403,11 @@
                 const chineseWeekStr = weekIndex === 0 ? "星期日" : `星期${toChineseNum(weekIndex)}`;
                 const ttsText = `${year}年${month}月${day}日，${chineseWeekStr}`;
                 
-                const uzbekDateStr = `${day}-${UZBEK_MONTHS[selectedDate.getMonth()]} ${year}-yil`;
-                const uzbekWeekStr = UZBEK_WEEKDAYS[weekIndex];
+                const monthData = MONTHS_DATA[selectedDate.getMonth()];
+                const weekData = WEEKDAYS_DATA[weekIndex];
+
+                const uzbekDateStr = `${day}-${monthData.uz} ${year}-yil`;
+                const uzbekWeekStr = weekData.uz;
 
                 return (
                     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm" onClick={() => setSelectedDate(null)}>
@@ -372,7 +423,10 @@
                                 </svg>
                                 <div className="relative z-10 text-center">
                                     <h3 className="text-yellow-300 font-bold text-xl sm:text-2xl tracking-widest">学习日期</h3>
-                                    <p className="text-white text-xs sm:text-sm opacity-90">Sana o'rganish</p>
+                                    <div className="text-white text-xs sm:text-sm opacity-90 space-y-0.5">
+                                        <p>Sana o'rganish</p>
+                                        <p className="text-[10px]">Learning the date / Изучение даты</p>
+                                    </div>
                                 </div>
                                 <button 
                                     onClick={() => setSelectedDate(null)}
@@ -405,16 +459,26 @@
                                         <div className="bg-gray-50 p-3 rounded-lg">
                                             <span className="block text-gray-400 text-xs uppercase mb-1">Uzbek Tilida</span>
                                             <span className="font-semibold text-gray-700 block">{uzbekDateStr}</span>
-                                            <span className="text-gray-600 block">{uzbekWeekStr}</span>
+                                            <span className="text-gray-600 block mb-1">{uzbekWeekStr}</span>
+                                            
+                                            {/* EN/RU Translations */}
+                                            <div className="pt-2 mt-1 border-t border-gray-100 text-[10px] text-gray-400 space-y-0.5">
+                                                <p>{monthData.en} {day} {year}, {weekData.en}</p>
+                                                <p>{day} {monthData.ru} {year}, {weekData.ru}</p>
+                                            </div>
                                         </div>
                                         <div className="bg-yellow-50 p-3 rounded-lg">
-                                            <span className="block text-yellow-600 text-xs uppercase mb-1">Eslatma</span>
+                                            <span className="block text-yellow-600 text-xs uppercase mb-1">Eslatma (Note / Примечание)</span>
                                             <div className="flex flex-col text-xs text-gray-600 space-y-1">
                                                 <span>Yil + 年 (nián)</span>
                                                 <span>Oy + 月 (yuè)</span>
                                                 <div className="flex flex-col">
                                                     <span>Kun + 日 (rì) / 号 (hào)</span>
-                                                    <span className="text-[10px] text-yellow-700 opacity-80 leading-tight mt-0.5">("号" ko'proq og'zaki nutqda ishlatiladi)</span>
+                                                    <div className="text-[10px] text-yellow-700 opacity-80 leading-tight mt-1 space-y-1">
+                                                        <p>"号" ko'proq og'zaki nutqda ishlatiladi</p>
+                                                        <p>"号" is mostly used in spoken language</p>
+                                                        <p>"号" чаще используется в устной речи</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -435,7 +499,11 @@
                                 <CalendarIcon className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" />
                                 <div className="flex flex-col">
                                     <span className="font-bold text-sm sm:text-lg leading-tight">Xitoy Taqvim <span className="hidden sm:inline">(中国日历)</span></span>
-                                    <span className="text-[9px] sm:text-xs text-red-400 font-medium">Dilfuza Kāng lǎo shī bilan xitoy tilini o'rganmiz</span>
+                                    <div className="flex flex-col text-[9px] sm:text-xs text-red-400 font-medium leading-tight mt-0.5">
+                                        <span>Dilfuza Kāng lǎo shī bilan xitoy tilini o'rganmiz</span>
+                                        <span className="opacity-80 scale-95 origin-left">Let's learn Chinese with Teacher Dilfuza Kang</span>
+                                        <span className="opacity-80 scale-95 origin-left">Изучаем китайский язык с учителем Дильфузой Кан</span>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -447,9 +515,14 @@
                                     <h2 className="text-base sm:text-lg font-bold leading-none">
                                         {currentDate.getFullYear()}年 {currentDate.getMonth() + 1}月
                                     </h2>
-                                    <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">
-                                        {UZBEK_MONTHS[currentDate.getMonth()]}
-                                    </p>
+                                    <div className="flex flex-col items-center mt-0.5 sm:mt-1 space-y-0.5">
+                                        <p className="text-[10px] sm:text-xs text-gray-500 font-medium">
+                                            {MONTHS_DATA[currentDate.getMonth()].uz}
+                                        </p>
+                                        <p className="text-[8px] sm:text-[10px] text-gray-400 leading-none">
+                                            {MONTHS_DATA[currentDate.getMonth()].en} / {MONTHS_DATA[currentDate.getMonth()].ru}
+                                        </p>
+                                    </div>
                                 </div>
                                 <button onClick={handleNextMonth} className="p-1 sm:p-2 hover:bg-gray-100 rounded-full transition-colors">
                                     <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -467,7 +540,7 @@
                         <div className="max-w-4xl mx-auto px-4 py-4 animate-in slide-in-from-top-4">
                             <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 flex flex-col sm:flex-row gap-4 items-center">
                                 <div className="flex-1">
-                                    <h4 className="font-bold text-yellow-800 mb-2">语法结构 (Grammatika)</h4>
+                                    <h4 className="font-bold text-yellow-800 mb-2">语法结构 (Grammatika / Grammar / Грамматика)</h4>
                                     <div className="flex items-center gap-2 text-xs sm:text-sm font-mono bg-white p-2 rounded border border-yellow-100 text-center justify-center sm:justify-start flex-wrap">
                                         <span className="text-red-600">Year</span> 
                                         <span className="text-gray-400">→</span>
@@ -475,9 +548,11 @@
                                         <span className="text-gray-400">→</span>
                                         <span className="text-red-600">Day</span>
                                     </div>
-                                    <p className="text-xs text-yellow-600 mt-2 italic">
-                                        * Og'zaki nutqda "日" (rì) o'rniga "号" (hào) ishlatilishi mumkin.
-                                    </p>
+                                    <div className="text-xs text-yellow-600 mt-2 italic space-y-1">
+                                        <p>* Og'zaki nutqda "日" (rì) o'rniga "号" (hào) ishlatilishi mumkin.</p>
+                                        <p className="opacity-80">* In spoken language "号" (hào) can be used instead of "日" (rì).</p>
+                                        <p className="opacity-80">* В устной речи вместо "日" (rì) можно использовать "号" (hào).</p>
+                                    </div>
                                 </div>
                                 <div className="w-full sm:w-32 h-16 sm:h-20 shrink-0">
                                     <svg viewBox="0 0 120 80" className="w-full h-full">
@@ -508,9 +583,12 @@
                                 <div key={day.zh} className={`text-center rounded-lg py-1 sm:py-2 border ${day.color}`}>
                                     <span className="block text-xs sm:text-sm font-bold sm:hidden">{day.zh}</span>
                                     <span className="hidden sm:block text-sm font-bold">{day.fullZh}</span>
-                                    <span className="block text-[10px] opacity-80 uppercase tracking-tighter">
+                                    <span className="block text-[10px] opacity-90 uppercase tracking-tighter font-medium">
                                         {day.uz}
                                     </span>
+                                    <div className="text-[8px] opacity-60 leading-none pb-0.5">
+                                        {day.en}/{day.ru}
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -523,7 +601,7 @@
                         <div className="mt-6 sm:mt-8">
                             <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3 sm:mb-4 flex items-center gap-2 px-2">
                                 <MessageCircle className="text-indigo-600 w-5 h-5 sm:w-6 sm:h-6" />
-                                对话练习 (Muloqot)
+                                对话练习 (Muloqot / Dialogue / Диалог)
                             </h3>
                             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4 sm:gap-3">
                                 {questions.map((q) => (
@@ -533,9 +611,11 @@
                                         className={`flex flex-row sm:flex-col items-center justify-start sm:justify-center p-3 sm:p-4 rounded-xl border transition-all duration-200 shadow-sm active:scale-95 ${q.color} text-left sm:text-center`}
                                     >
                                         <div className="mr-3 sm:mr-0 sm:mb-2 p-2 bg-white rounded-full shadow-sm shrink-0">{q.icon}</div>
-                                        <div>
-                                            <span className="font-bold text-base sm:text-lg block">{q.zh.split('是')[0]}?</span>
-                                            <span className="text-xs opacity-80 block">{q.uz.split(' ')[0]}?</span>
+                                        <div className="flex flex-col">
+                                            <span className="font-bold text-base sm:text-lg block leading-tight">{q.zh.split('是')[0]}?</span>
+                                            <span className="text-xs opacity-90 block mt-1 font-medium">{q.uz.split('?')[0]}?</span>
+                                            <span className="text-[10px] opacity-70 block">{q.en}</span>
+                                            <span className="text-[10px] opacity-70 block">{q.ru}</span>
                                         </div>
                                     </button>
                                 ))}
